@@ -1,16 +1,19 @@
-# Rails ile Film Veritabanı Uygulaması - 2
+# Rails ile Film Veritabanı Uygulaması - 3
 
-Bu ödev, [bir önceki ödevde](https://github.com/railsakademi/odev-02rails) yaptığımız Rails projesinin devamıdır. 
+Bu ödev, [bir önceki ödevde](https://github.com/railsakademi/odev-03crud) yaptığımız Rails projesinin devamıdır.
 
 ## Yapılması Gerekenler
 
-- `Movie` modeli için;
-  - Tüm filmlerin listelendiği `index` sayfası
-    - Her film için detay(`show`), düzenle(`edit`) ve silme(`destroy`) linkleri
-  - Filmin detaylarının gösterildiği `show` sayfası
-    - Filmi düzenle(`edit`), film listesi(`index`) sayfalarına linkler
-  - Yeni film ekleme `new` sayfası
-  - Film düzenleme `edit` sayfası 
+- `User` modelini kullanarak Devise[1] kurulumu.
+  - Tüm sayfaların navbarında eğer kullanıcı giriş yapmadıysa `Giriş Yap` ve `Kayıt Ol` linklerini, eğer kullanıcı giriş yaptıysa kullanıcının eposta adresini göstermek.
+- Giriş yapmış kullanıcıların, filmlere + ve - oy verebilmesi.
+  - Bunun için `Rating` modeli oluşturun, `movie_id, user_id, point` fieldları olan.(`has_many through` ilişkisi). - için point -1, + için point 1 olmalı.
+  - Film sayfasında o film için verilmiş oyların toplamını gösterin.(+ ve - pointlerin toplamı).
+  - User sayfasında(`users/:id`) kullanıcının oy verdiği filmleri gösterin.
+- `Category` modeli ekleyin, filmler birden fazla kategoriye ait olabilir. Bir kategoride birden fazla kategori olabilir. (`HABTM` ilişkisi)
+  - `movies#edit` sayfasında checkboxlar ile filmin ait olduğu kategoriler seçilebilmeli
+  - `Category` modeli için `CRUD`. Category show sayfasında kategoriye ait olan filmleri listeleyin.
+- Anasayfada en çok puan almış 10 filmi sıralayarak listeleyin.(Filmin puanı -> + ve - oyların toplamı )
 
 ## Başlangıç
 
@@ -23,9 +26,4 @@ Bu ödev, [bir önceki ödevde](https://github.com/railsakademi/odev-02rails) ya
 
 ## Linkler
 
-1. http://guides.rubyonrails.org/active_record_basics.html
-2. http://guides.rubyonrails.org/active_record_migrations.html
-3. http://guides.rubyonrails.org/layouts_and_rendering.html
-4. http://guides.rubyonrails.org/form_helpers.html
-5. http://guides.rubyonrails.org/action_controller_overview.html
-6. http://guides.rubyonrails.org/routing.html
+1. https://github.com/plataformatec/devise
