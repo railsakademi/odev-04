@@ -1,4 +1,4 @@
-class MoviesCategories < ActiveRecord::Migration
+class CategoriesMovies < ActiveRecord::Migration
   def change
     create_table :categories_movies do |t|
       t.references :movie

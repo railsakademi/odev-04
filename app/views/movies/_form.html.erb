@@ -23,6 +23,17 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, class: "form-control" %>
   </div>
+
+  <div class="field">
+  <!--  Kategori
+    <%= f.fields_for :categories do |ctg_frm| %>
+      <li>
+        <%= ctg_frm.check_box :title%>
+      </li>
+    <% end %>
+  -->
+  </div>
+
   <div class="field">
     <%= f.label :director %><br>
     <%= f.text_field :director, class: "form-control" %>

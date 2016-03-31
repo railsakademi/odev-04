@@ -26,6 +26,13 @@
     </p>
 
     <p>
+      <strong>Category:</strong>
+      <% @movie.categories.each do |ctg| %>
+        <%= link_to ctg.title, category_list_path(ctg)  %>
+      <% end %>
+    </p>
+
+    <p>
       <strong>Date:</strong>
       <%= @movie.date %>
     </p>
