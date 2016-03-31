@@ -1,29 +1,94 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+  <div class="col-md-4">
+    <%= image_tag @movie.image.url(:medium) %>
+  </div>
+  <div class="col-md-8">
 
-<p>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</p>
+    <p>
+      <strong>Title:</strong>
+      <%= @movie.title %>
+    </p>
 
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @movie.description %>
+    </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @movie.country %>
-</p>
+    <p>
+      <strong>Director:</strong>
+      <%= @movie.director %>
+    </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @movie.date %>
-</p>
+    <p>
+      <strong>Country:</strong>
+      <%= @movie.country %>
+    </p>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+    <p>
+      <strong>Date:</strong>
+      <%= @movie.date %>
+    </p>
+
+    <p>
+      <strong>Toplam Oy:</strong>
+      <%= @rating_count.to_i %>
+    </p>
+
+    <p>
+      <%= link_to 'Edit', edit_movie_path(@movie) , class: "btn btn-info" %>
+      <%= link_to 'Back', movies_path , class: "btn btn-primary" %>
+    </p>
+
+    <% if current_user &&  !@movie.ratings.exists?(user_id: current_user.id) %>
+  			<%= form_for @rating do |f| %>
+  			<%= f.hidden_field :movie_id, :value => @movie.id %>
+  			  <%= f.radio_button :point, "1" %>
+  				<%= label_tag(:point_1, '+1') %>
+
+  			  <%= f.radio_button :point,"-1"%>
+  				<%= label_tag(:point_1, '-1') %>
+  				<%= submit_tag "Kaydet", class: "btn btn-success" %>
+        <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <hr style="color:#c6c6c6; border:1px solid #c6c6c6;">
+    <h2>Yorumlar</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Yorum</th>
+          <th>Kullanıcı</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @comments.each do |cmt| %>
+          <tr>
+            <td><%= cmt.comment %></td>
+            <td><%= cmt.user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  </div>
+
+  <div class="col-md-12">
+    <h3>Yeni Yorum Ekle</h3>
+    <%= form_for @comment do |f| %>
+      <%= f.hidden_field :movie_id, :value => @movie.id %>
+      <%= label_tag(:comment, 'Yorumunuz') %>
+      <%= f.text_area :comment, class: "form-control" %>
+
+      <br>
+      <%= f.submit "Gönder", class:"btn btn-success" %>
+    <% end %>
+  </div>
+
+
+</div>

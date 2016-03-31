@@ -1,11 +1,16 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except:[:index, :show]
 
   def index
     @movies = Movie.all
   end
 
   def show
+    @rating   = Rating.new
+    @rating_count = Rating.all.where(movie: @movie).sum(:point)
+    @comments = Comment.all.where(movie: @movie)
+    @comment  = Comment.new
   end
 
   def new
@@ -44,6 +49,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:title, :description, :director, :country, :date)
+      params.require(:movie).permit(:title, :description, :director, :country, :date, :image)
     end
 end
