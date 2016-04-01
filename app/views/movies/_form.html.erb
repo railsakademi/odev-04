@@ -26,7 +26,7 @@
 
   <div class="field">
    <%= f.label 'Kategori Seçin' %><br />
-   <%= f.collection_select :category_ids, @categories, :id, :title, {}, {:multiple => true, class: 'select2 '} %>
+   <%= f.collection_select :category_ids, @categories, :id, :title, {}, {:multiple => true, class: 'form-control '} %>
  </div>
 
   <div class="field">

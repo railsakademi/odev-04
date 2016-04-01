@@ -90,7 +90,7 @@
       </tbody>
   </table>
   </div>
-
+<% if user_signed_in? %>
   <div class="col-md-12">
     <h3>Yeni Yorum Ekle</h3>
     <%= form_for @comment do |f| %>
@@ -102,6 +102,6 @@
       <%= f.submit "Gönder", class:"btn btn-success" %>
     <% end %>
   </div>
-
+<% end %>
 
 </div>

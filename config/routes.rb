@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :movies
-  root to: "movies#index"
+  root to: "movies#topten"
   resources :ratings
   resources :comments
   resources :categories

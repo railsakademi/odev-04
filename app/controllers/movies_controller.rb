@@ -3,14 +3,25 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
   before_action :set_categories, only: [:edit,:new,:create,:update]
 
+
+  def topten
+    #@movies = Movie.select(:rating).map(&:point).uniq
+    @movies = Movie.all
+    @count = []
+    @movies.each_with_index do |movie,i|
+      @count[i] = {point: movie.ratings.sum(:point), movie: movie}
+    end
+
+  end
+
   def index
     @movies = Movie.all
   end
 
   def show
     @rating   = Rating.new
-    @rating_count = Rating.all.where(movie: @movie).sum(:point)
-    @comments = Comment.all.where(movie: @movie)
+    @rating_count = Rating.where(movie: @movie).sum(:point)
+    @comments = Comment.where(movie: @movie)
     @comment  = Comment.new
   end
 
