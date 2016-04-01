@@ -1,4 +1,4 @@
-<%= form_for(@movie) do |f| %>
+<%=  simple_nested_form_for(@movie) do |f| %>
   <% if @movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -25,14 +25,9 @@
   </div>
 
   <div class="field">
-  <!--  Kategori
-    <%= f.fields_for :categories do |ctg_frm| %>
-      <li>
-        <%= ctg_frm.check_box :title%>
-      </li>
-    <% end %>
-  -->
-  </div>
+   <%= f.label 'Kategori Seçin' %><br />
+   <%= f.collection_select :category_ids, @categories, :id, :title, {}, {:multiple => true, class: 'select2 '} %>
+ </div>
 
   <div class="field">
     <%= f.label :director %><br>
@@ -45,6 +40,10 @@
   <div class="field">
     <%= f.label :date %><br>
     <%= f.number_field :date, class: "form-control" %>
+  </div>
+
+  <div class="field">
+   <%= f.input :youtube, label: "Youtube ID", input_html: { class: 'form-control' } %>
   </div>
   <div class="actions">
     <%= f.submit %>

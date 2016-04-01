@@ -1,9 +1,10 @@
 <div class="row">
 
-  <div class="col-md-4">
+  <div class="col-md-2 col-sm-4">
     <%= image_tag @movie.image.url(:medium) %>
   </div>
-  <div class="col-md-8">
+
+  <div class="col-md-6 col-sm-8">
 
     <p>
       <strong>Title:</strong>
@@ -28,7 +29,7 @@
     <p>
       <strong>Category:</strong>
       <% @movie.categories.each do |ctg| %>
-        <%= link_to ctg.title, category_list_path(ctg)  %>
+        <%= link_to ctg.title, ctg  %>
       <% end %>
     </p>
 
@@ -60,6 +61,11 @@
     <% end %>
 
   </div>
+  <% if @movie.youtube %>
+  <div class="col-md-4 col-sm-12">
+    <iframe style="width:100%; height:260px;" src="https://www.youtube.com/embed/<%= @movie.youtube %>" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <% end %>
 </div>
 
 <div class="row">

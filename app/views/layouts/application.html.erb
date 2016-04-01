@@ -22,12 +22,14 @@
       <ul class="nav navbar-nav">
         <%= active_link_to "Anasayfa", root_path, :wrap_tag => :li %>
         <%= active_link_to "Hakkkında", about_path, :wrap_tag => :li %>
+        <%= active_link_to "Kategoriler", categories_path, :wrap_tag => :li %>
         <%= active_link_to "İletişim", contact_path, :wrap_tag => :li %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <%  if user_signed_in? %>
-          <%= active_link_to "Yeni Film Ekle", new_movie_path, :wrap_tag => :li %>
+          <%= active_link_to "Film Ekle", new_movie_path, :wrap_tag => :li %>
+          <%= active_link_to "Kategori Ekle", new_category_path, :wrap_tag => :li %>
           <%= active_link_to "Çıkış Yap", destroy_user_session_path, method: :delete, :wrap_tag => :li %>
           <%= active_link_to "Admin", rails_admin_path, :wrap_tag => :li %>
         <% else %>

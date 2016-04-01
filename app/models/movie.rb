@@ -8,4 +8,10 @@ class Movie < ActiveRecord::Base
 
   has_attached_file :image, styles: { medium: "182x268>", small: "150x150>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  validates :title, presence: true
+  validates :director, presence: true
+  validates :country, presence: true
+  validates :date, presence: true
+
 end
