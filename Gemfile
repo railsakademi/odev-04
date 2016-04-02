@@ -9,9 +9,19 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-
+gem 'bootstrap-sass', '~> 3.3.6'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'active_link_to', '~> 1.0', '>= 1.0.3'
+gem 'pundit', '~> 1.1'
+gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'rails_admin', '~> 0.8.1'
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'awesome_print', '~> 1.6', '>= 1.6.1'
+gem 'pry', '~> 0.10.3'
+gem 'pry-rails', :group => :development
+gem 'better_errors', '~> 2.1', '>= 2.1.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

@@ -1,0 +1,33 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        Kategori Adı
+      </th>
+
+      <th>
+        Film Sayısı
+      </th>
+
+      <th>
+        #
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+        <tr>
+          <td> <%= link_to category.title , category %> </td>
+          <td>(<%= category.movies.count %>)</td>
+          <td>
+            <%= link_to 'Göster', category, class: "btn btn-info" %>
+            <%= link_to 'Düzenle', edit_category_path(category), class: "btn btn-primary" %>
+            <%= link_to 'Sil', category,method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger" %>
+
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+
+</table>
