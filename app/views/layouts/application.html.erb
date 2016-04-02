@@ -21,9 +21,9 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <%= active_link_to "Anasayfa", root_path, :wrap_tag => :li %>
-        <%= active_link_to "Hakkkında", about_path, :wrap_tag => :li %>
+        <!-- <%= active_link_to "Hakkkında", about_path, :wrap_tag => :li %> -->
         <%= active_link_to "Kategoriler", categories_path, :wrap_tag => :li %>
-        <%= active_link_to "İletişim", contact_path, :wrap_tag => :li %>
+        <!-- <%= active_link_to "İletişim", contact_path, :wrap_tag => :li %> -->
         <%= active_link_to "Tüm Filmler", movies_path, :wrap_tag => :li %>
 
       </ul>
@@ -35,7 +35,8 @@
           <%= active_link_to "Çıkış Yap", destroy_user_session_path, method: :delete, :wrap_tag => :li %>
           <%= active_link_to "Admin", rails_admin_path, :wrap_tag => :li %>
         <% else %>
-        <%= active_link_to "Giriş Yap", new_user_session_path, :wrap_tag => :li %>
+          <%= active_link_to "Giriş Yap", new_user_session_path, :wrap_tag => :li %>
+          <%= active_link_to "Kayıt Ol", new_user_registration_path, :wrap_tag => :li %>
         <% end %>
       </ul>
     </div><!--/.nav-collapse -->
@@ -43,7 +44,16 @@
 </nav>
 
 <div class="container">
+  <% if user_signed_in? %>
+    <div class="row">
+        <div class="col-md-8">
 
+        </div>
+        <div class="col-md-4">
+          <%= link_to current_user.email, user_profile_path(current_user) %>
+        </div>
+    </div>
+  <% end %>
   <% if flash.notice %>
     <div class="alert alert-warning" role="alert">
       <%= flash.notice %>

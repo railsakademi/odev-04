@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :categories
 
+  get 'user/:id', to: "users#show", as: :user_profile
   get 'hakkinda', to: "pages#about", as: :about
   get 'iletisim', to: "pages#contact", as: :contact
 
