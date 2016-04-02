@@ -41,6 +41,7 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
+    awesome_print (1.6.1)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -216,6 +217,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to (~> 1.0, >= 1.0.3)
+  awesome_print (~> 1.6, >= 1.6.1)
   bootstrap-sass (~> 3.3.6)
   byebug
   devise (~> 3.5, >= 3.5.6)

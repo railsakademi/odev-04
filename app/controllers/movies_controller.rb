@@ -1,16 +1,17 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except:[:index, :show]
+  before_action :authenticate_user!, except:[:index, :topten, :show]
   before_action :set_categories, only: [:edit,:new,:create,:update]
-
+require "awesome_print"
 
   def topten
-    #@movies = Movie.select(:rating).map(&:point).uniq
     @movies = Movie.all
-    @count = []
+    @count = {}
     @movies.each_with_index do |movie,i|
-      @count[i] = {point: movie.ratings.sum(:point), movie: movie}
+      @count[movie.ratings.sum(:point).to_i] = movie
     end
+
+    @count = Hash[@count.sort_by { |k,v| -k }[0..9]]
 
   end
 
