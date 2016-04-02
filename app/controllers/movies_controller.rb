@@ -8,10 +8,10 @@ require "awesome_print"
     @movies = Movie.all
     @count = {}
     @movies.each_with_index do |movie,i|
-      @count[movie.ratings.sum(:point).to_i] = movie
+      @count[movie.id] = {point: movie.ratings.sum(:point).to_i , movie: movie }
     end
 
-    @count = Hash[@count.sort_by { |k,v| -k }[0..9]]
+    @count = Hash[@count.sort_by { |k,v| -v[:point] }[0..9]]
 
   end
 

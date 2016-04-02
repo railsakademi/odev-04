@@ -13,21 +13,21 @@
     </thead>
 
     <tbody>
-      <% @count.each do |point,movie| %>
+      <% @count.each do |mvid,param| %>
         <tr>
           <td>
-            <%= link_to (image_tag movie.image.url(:small)), movie %>
+            <%= link_to (image_tag param[:movie].image.url(:small)), param[:movie] %>
           </td>
-          <td><%= movie.title %></td>
-          <td><%= point %></td>
-          <td><%= movie.director %></td>
-          <td><%= movie.country %></td>
-          <td><%= movie.date %></td>
-          <td><%= link_to 'Show', movie, class: "btn btn-info" %></td>
+          <td><%= param[:movie].title %></td>
+          <td><%= param[:point] %></td>
+          <td><%= param[:movie].director %></td>
+          <td><%= param[:movie].country %></td>
+          <td><%= param[:movie].date %></td>
+          <td><%= link_to 'Show', param[:movie], class: "btn btn-info" %></td>
 
           <% if user_signed_in? %>
-            <td><%= link_to 'Edit', edit_movie_path(movie) , class: "btn btn-primary" %></td>
-            <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger" %></td>
+            <td><%= link_to 'Edit', edit_movie_path(param[:movie]) , class: "btn btn-primary" %></td>
+            <td><%= link_to 'Destroy', param[:movie], method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger" %></td>
           <% end %>
         </tr>
       <% end %>

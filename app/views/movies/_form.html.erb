@@ -1,4 +1,4 @@
-<%=  simple_nested_form_for(@movie) do |f| %>
+<%=  simple_form_for(@movie) do |f| %>
   <% if @movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -46,6 +46,6 @@
    <%= f.input :youtube, label: "Youtube ID", input_html: { class: 'form-control' } %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Gönder',class: "btn btn-primary" %>
   </div>
 <% end %>
